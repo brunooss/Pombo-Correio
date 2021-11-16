@@ -4,6 +4,6 @@
 <ul>
     <message 
         *ngFor="let message of messages"
-        [text]="message.text" [sender]="message.senderUser.toString() + ' | ' + message.timestamp.toDateString()">
+        [text]="message.text" sender="Anonymous">
     </message>
 </ul>
