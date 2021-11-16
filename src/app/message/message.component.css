@@ -11,6 +11,12 @@
     float: right;
 }
 
+.message-title {
+    margin-top: 0; 
+    margin-bottom: 0;
+    font-size: 12px;
+}
+
 .message-text {
     margin: 0;
     color: #FFFFFF; 

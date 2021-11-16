@@ -13,15 +13,17 @@ export class CommunicationServerService {
 
   messages$ = <Observable<ServerResponse>>
   this.http.get<ServerResponse>(`${this.apiUrl}/messages/messagesList`)
-  .pipe(tap(console.log), catchError(this.handleError))
+  .pipe(tap(console.log), catchError(this.handleError));
 
   save$ = (message: Message) => <Observable<ServerResponse>>
   this.http.post<ServerResponse>(`${this.apiUrl}/messages/saveMessage`, message)
-  .pipe(tap(console.log), catchError(this.handleError))
+  .pipe(tap(console.log), catchError(this.handleError));
 
   delete$ = (id: number) => <Observable<ServerResponse>>
   this.http.delete<ServerResponse>(`${this.apiUrl}/messages/deleteMessage/${id}`)
-  .pipe(tap(console.log), catchError(this.handleError))
+  .pipe(tap(console.log), catchError(this.handleError));
+
+  ip$ = this.http.get("http://api.ipify.org/?format=json").pipe(tap(console.log), catchError(this.handleError));
 
   private handleError(error: HttpErrorResponse): Observable<never> {
     console.log(error)

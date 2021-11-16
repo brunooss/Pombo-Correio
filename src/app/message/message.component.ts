@@ -1,4 +1,5 @@
-import { Component, Injectable, Input } from '@angular/core';
+import { CommunicationServerService } from './../service/communication-server.service';
+import { Component, Injectable, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'message',
@@ -10,4 +11,16 @@ import { Component, Injectable, Input } from '@angular/core';
 export class MessageComponent {
 
   @Input() text!: string;
+
+  constructor (private serverService: CommunicationServerService) { }
+
+  ipAddress!: string;
+
+  ngOnInit() {
+    this.getIpAddress()
+  }
+
+  getIpAddress() {
+    this.serverService.ip$.subscribe((response: any) => {  this.ipAddress = response.ip; })
+  }
 }

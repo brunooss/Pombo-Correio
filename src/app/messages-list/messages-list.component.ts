@@ -1,8 +1,10 @@
+import { ServerResponse } from './../interface/server-response';
 import { Message } from './../interface/message';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { map, Observable, of, Subscription } from 'rxjs';
-import { MessagesListService } from '../messages-list.service';
+import { catchError, map, Observable, of, Subscription, tap, throwError, startWith } from 'rxjs';
+import { MessagesListService } from '../service/messages-list.service';
 import { CommunicationServerService } from '../service/communication-server.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'messages-list',
@@ -11,27 +13,46 @@ import { CommunicationServerService } from '../service/communication-server.serv
 })
 export class MessagesListComponent implements OnInit, OnDestroy {
 
-  subscription!: Subscription;
+  serverSubscription!: Subscription;
+  serviceSubscription!: Subscription;
   messages$: Observable<Message[]> = new Observable()
   messages: Message[] = []
 
   constructor(private service: MessagesListService, private serverService: CommunicationServerService) { }
   
   ngOnInit(): void {
-    this.subscription = this.service.currentMessages.subscribe((messages: Message[]) => this.messages$ = of(messages))
+    
+    this.serverSubscription = this.serverService.messages$.subscribe(
+      (response: ServerResponse) => this.messages$ = of(response.data as Message[])
+    )
+
+    this.serviceSubscription = this.service.currentMessage.subscribe(
+      (response: Message) => {
+        this.messages.push(response)
+
+        if (response.text) {
+          this.serverService.save$(response).subscribe((r: ServerResponse) => console.log(response.text))
+        }
+      })
 
     this.messages$ = this.serverService.messages$
     .pipe(
       map(response => { return response.data.messages! })
     )
 
-    this.getMessages()
+    this.getMessages();
   }
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    this.serverSubscription.unsubscribe();
+    this.serviceSubscription.unsubscribe();
   }
 
   getMessages() {
-    return this.messages$.subscribe( message => this.messages = message );
+    return this.messages$.subscribe( messages => this.messages = messages );
+  }
+
+  private handleError(error: HttpErrorResponse): Observable<never> {
+    console.log(error)
+    return throwError(`Error: ${error.status} - ${error.message}`);
   }
 }

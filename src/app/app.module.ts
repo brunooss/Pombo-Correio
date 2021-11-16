@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MessageComponent } from './message/message.component';
-import { MessagesListService } from './messages-list.service';
+import { MessagesListService } from './service/messages-list.service';
 import { MessagesListComponent } from './messages-list/messages-list.component';
 
 import { HttpClientModule } from '@angular/common/http'
