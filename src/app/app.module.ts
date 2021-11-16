@@ -7,6 +7,8 @@ import { MessageComponent } from './message/message.component';
 import { MessagesListService } from './messages-list.service';
 import { MessagesListComponent } from './messages-list/messages-list.component';
 
+import { HttpClientModule } from '@angular/common/http'
+
 import { NbThemeModule, NbLayoutModule, NbButtonModule, NbInputModule, NbIconModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 
@@ -24,7 +26,8 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
     NbInputModule,
     NbButtonModule,
     NbEvaIconsModule,
-    NbIconModule
+    NbIconModule,
+    HttpClientModule
   ],
   providers: [
     MessagesListService

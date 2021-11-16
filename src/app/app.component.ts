@@ -1,5 +1,9 @@
+import { ServerResponse } from './interface/server-response';
+import { CommunicationServerService } from './service/communication-server.service';
 import { MessagesListService } from './messages-list.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Message } from './interface/message';
+import { map, startWith, Observable, catchError, of } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +18,7 @@ export class AppComponent {
   constructor(private service: MessagesListService) { }
   
   onSubmit() {
-    this.service.updateMessagesList(this.currentMessage)
+    this.service.updateMessagesList({ id: 1, senderUser: 24, text: this.currentMessage, timestamp: new Date() })
   }
   onKeyUp(event: any) {
     
