@@ -11,16 +11,17 @@ import { Component, Injectable, Input, OnInit } from '@angular/core';
 export class MessageComponent {
 
   @Input() text!: string;
+  @Input() sender!: string;
 
   constructor (private serverService: CommunicationServerService) { }
 
-  ipAddress!: string;
+  //ipAddress!: string;
 
   ngOnInit() {
-    this.getIpAddress()
+    //this.getIpAddress()
   }
 
-  getIpAddress() {
-    this.serverService.ip$.subscribe((response: any) => {  this.ipAddress = response.ip; })
-  }
+  //getIpAddress() {
+  //  this.serverService.ip$.subscribe((response: any) => {  this.ipAddress = response.ip; })
+  //}
 }
