@@ -7,7 +7,7 @@ import { Message } from '../interface/message';
 
 @Injectable({ providedIn: 'root' })
 export class CommunicationServerService {
-  private readonly apiUrl = 'http://pombocorreio-api.herokuapp.com'
+  private readonly apiUrl = 'https://pombocorreio-api.herokuapp.com'
 
   constructor(private http: HttpClient) { }
 
