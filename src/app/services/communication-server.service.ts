@@ -1,9 +1,9 @@
-import { ServerResponse } from './../interface/server-response';
+import { ServerResponse } from '../interfaces/server-response';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
-import { Message } from '../interface/message';
+import { Message } from '../interfaces/message';
 
 @Injectable({ providedIn: 'root' })
 export class CommunicationServerService {

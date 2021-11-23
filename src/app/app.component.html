@@ -1,18 +1,1 @@
-<nb-layout>
-    
-    <nb-layout-header fixed 
-        style="
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            font-weight: 600; font-size: large;
-        "
-        >Pombo Correio</nb-layout-header>
-
-    <nb-layout-column>
-        <messages-list></messages-list>
-    </nb-layout-column>
-
-    <nb-layout-footer>
-        <input nbInput (keyup)="onKeyUp($event)">
-        <button nbButton (click)="onSubmit()">Send</button>
-    </nb-layout-footer>
-</nb-layout>
+<router-outlet></router-outlet>

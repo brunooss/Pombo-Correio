@@ -1,4 +1,4 @@
-import { Message } from './../interface/message';
+import { Message } from '../interfaces/message';
 import { Injectable, OnDestroy, OnInit } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 

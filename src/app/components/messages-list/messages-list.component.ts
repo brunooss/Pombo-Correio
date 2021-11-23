@@ -1,9 +1,9 @@
-import { ServerResponse } from './../interface/server-response';
-import { Message } from './../interface/message';
+import { ServerResponse } from '../../interfaces/server-response';
+import { Message } from '../../interfaces/message';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { catchError, map, Observable, of, Subscription, tap, throwError, startWith } from 'rxjs';
-import { MessagesListService } from '../service/messages-list.service';
-import { CommunicationServerService } from '../service/communication-server.service';
+import { MessagesListService } from '../../services/messages-list.service';
+import { CommunicationServerService } from '../../services/communication-server.service';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({

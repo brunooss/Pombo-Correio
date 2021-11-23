@@ -1,0 +1,8 @@
+@font-face {
+    font-family: "Product Sans";
+    src: local("Product Sans"), url(../../../assets/fonts/Product-Sans-Regular.ttf) format("truetype");
+}
+
+* {
+    font-family: "Product Sans", Arial, Helvetica, sans-serif;
+}

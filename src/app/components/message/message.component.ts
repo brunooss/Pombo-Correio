@@ -1,4 +1,4 @@
-import { CommunicationServerService } from './../service/communication-server.service';
+import { CommunicationServerService } from '../../services/communication-server.service';
 import { Component, Injectable, Input, OnInit } from '@angular/core';
 
 @Component({
