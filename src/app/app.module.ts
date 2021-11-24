@@ -13,6 +13,7 @@ import { NbThemeModule, NbLayoutModule, NbButtonModule, NbInputModule, NbIconMod
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { GlobalChatPageComponent } from './pages/global-chat-page/global-chat-page.component';
+import { SignupPageComponent } from './pages/signup-page/signup-page.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { GlobalChatPageComponent } from './pages/global-chat-page/global-chat-pa
     MessageComponent,
     MessagesListComponent,
     LoginPageComponent,
-    GlobalChatPageComponent
+    GlobalChatPageComponent,
+    SignupPageComponent
   ],
   imports: [
     BrowserModule,
